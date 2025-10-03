@@ -51,7 +51,7 @@ def require_login(f):
 # =========================================================
 @app.route("/")
 def index():
-    return {"message": "API is running"}
+    return {"message": "API is running on Vercel"}
 
 # =========================================================
 # PRODUCTS (CRUD hanya admin)
@@ -150,7 +150,7 @@ def create_post():
     return jsonify(data.data), 201
 
 # =========================================================
-# RUN
+# HANDLER UNTUK VERCEL
 # =========================================================
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+def handler(request, *args, **kwargs):
+    return app(request, *args, **kwargs)
